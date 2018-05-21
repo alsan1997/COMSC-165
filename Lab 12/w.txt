@@ -1,0 +1,104 @@
+	// LAB 12: A Database Program
+// Programmer: Nelson Adiwira
+// Editor(s) used: Notepad++
+// Compiler(s) used: Visual Studio Command Prompt (2010)
+ 
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::ios;
+ 
+#include <string>
+using std::string;
+ 
+#include <iomanip>
+using std::setw;
+ 
+#include <cstdlib>
+ 
+struct course
+{
+  char title[12]; // course designation
+  char term[7]; // term
+  int unit; // units
+  char grade; // grade
+  course* next; // link
+};
+ 
+void printMyInfo(string);
+void coutCourse(const course*);
+ 
+int main()
+{
+  printMyInfo("LAB 12: A Database Program");
+   
+  // declarations
+  char buf[100]; // buffer
+  char choice; // y/n choice to add another course
+   
+  // create list
+  course* start = 0; // main list
+   
+  while(true)
+  {
+    // print out table
+    cout << endl;
+    coutCourse(start);
+    cout << endl;
+     
+    // prompt user to enter another course
+    cout << "Type in anything to add a course, otherwise enter n: ";
+    cin >> choice;
+    choice = tolower(choice);
+    if (choice == 'n')
+      break;
+     
+    course* a = new course; // input list
+     
+    // prompt user to enter details
+    cout << "Enter course name: ";
+    cin >> a->title;
+     
+    cout << "Enter the term: ";
+    cin >> a->term;
+     
+    cout << "Enter the number of units: ";
+    cin >> buf; a->unit = atoi(buf);
+     
+    cout << "Enter the grade: ";
+    cin >> a->grade;
+     
+    // insert data to front of list
+    a->next = start;
+    start = a;
+  }
+  // deallocate memory
+  while (start) // zero when the list is empty
+  {
+    course* next = start->next; // save start's next before killing off start
+    delete start; // kill off the start
+    start = next; // a new start
+  }
+}
+ 
+void printMyInfo(string lab)
+{
+  cout << lab << endl;
+  cout << "Programmer: Nelson Adiwira\n";
+  cout << "Editor(s) used: Notepad++\n";
+  cout << "Compiler(s) used: Visual Studio Command Prompt (2010)\n";
+  cout << "File: " << __FILE__ << endl;
+  cout << "Complied: " << __DATE__ << " at " << __TIME__ << endl << endl;
+}
+ 
+void coutCourse(const course* x)
+{
+  cout.setf(ios::left, ios::adjustfield);
+  cout << setw(12) << "COURSE" << setw(7) << "TERM" << setw(6) << "UNITS" << setw(5) << "GRADE" << endl;
+  cout << setw(12) << "-----------" << setw(7) << "------" << setw(6) << "-----" << setw(5) << "-----" << endl;
+   
+  const course* p;
+  for (p = x; p; p = p -> next)
+    cout << setw(12) << p->title << setw(7) << p->term << setw(6) << p->unit << setw(5) << p->grade << endl;
+}

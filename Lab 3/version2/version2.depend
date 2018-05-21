@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1410006132 source:f:\comsc165\lab 3\version2\main.cpp
+	<iostream>
+	<iomanip>
+	<cstdlib>
+

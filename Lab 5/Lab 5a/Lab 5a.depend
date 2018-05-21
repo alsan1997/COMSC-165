@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1410807876 source:e:\comsc165\lab 5\lab 5a\main.cpp
+	<iostream>
+	<cstdlib>
+	<iomanip>
+

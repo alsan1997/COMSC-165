@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1410978722 source:e:\comsc165\lab 5\lab 5b\main.cpp
+	<iostream>
+	<cstdlib>
+	<cmath>
+

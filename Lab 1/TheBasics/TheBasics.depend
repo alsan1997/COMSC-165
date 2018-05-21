@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1408561888 source:e:\comsc165\lab 1\thebasics\main.cpp
+	<iostream>
+	<cstdlib>
+	<string>
+
